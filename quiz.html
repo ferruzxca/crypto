@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cryptocurrency Quiz</title>
+    <style>
+        /* Combined CSS */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1{
+            color: #fff;
+            text-align: center;
+        }
+        
+        h2, h3, h4, h5, h6 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        /* Quiz Styles */
+        .quiz {
+            margin-bottom: 40px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .options li {
+            background: #d1d0d2;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .options label {
+            display: block;
+            padding: 10px;
+            border: 1px solid #2457c6;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .options input[type="radio"] {
+            display: none;
+        }
+
+        .options label:hover,
+        .options input[type="radio"]:checked + label {
+            background-color: #769ad9;
+            color: #333;
+        }
+
+        .button, .submit-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .button:hover, .submit-button:hover {
+            background-color: #3e8e41;
+            transform: scale(1.1);
+        }
+
+
+        .button2, .submit-button2 {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #4c81af;
+            border: none;
+            border-radius: 10px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .button2:hover, .submit-button2:hover {
+            background-color: #4951e7;
+            transform: scale(1.1);
+        }
+
+        /* Feedback Styles */
+        .feedback {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .correct-feedback {
+            color: #2ecc71;
+            animation: correct-animation 0.5s;
+        }
+
+        .incorrect-feedback {
+            color: #e74c3c;
+            animation: incorrect-animation 0.5s;
+        }
+
+        /* Animations */
+        @keyframes correct-animation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes incorrect-animation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.8);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            clear: both;
+        }
+
+        .show {
+            display: block !important;
+        }
+
+        #score {
+            display: none;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .score-animation {
+            animation: score-animation 1s;
+        }
+
+        @keyframes score-animation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Cryptocurrency Quiz</h1>
+            <p>Test your knowledge of cryptocurrencies!</p>
+        </header>
+        <main class="main-content">
+            <div class="quiz">
+                <div class="question">
+                    <h2>Question 1:</h2>
+                    <p>What is the name of the first and most well-known cryptocurrency?</p>
+                    <ul class="options">
+                        <li>
+                            <input type="radio" id="q1-a" name="q1" value="A) Ethereum">
+                            <label for="q1-a">A) Ethereum</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q1-b" name="q1" value="B) Ripple">
+                            <label for="q1-b">B) Ripple</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q1-c" name="q1" value="C) Bitcoin">
+                            <label for="q1-c">C) Bitcoin</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q1-d" name="q1" value="D) Dogecoin">
+                            <label for="q1-d">D) Dogecoin</label>
+                        </li>
+                    </ul>
+                    <button class="submit-button" onclick="checkAnswer(1)">Submit</button>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question">
+                    <h2>Question 2:</h2>
+                    <p>Which cryptocurrency was created by Satoshi Nakamoto?</p>
+                    <ul class="options">
+                        <li>
+                            <input type="radio" id="q2-a" name="q2" value="A) Bitcoin">
+                            <label for="q2-a">A) Bitcoin</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q2-b" name="q2" value="B) Ethereum">
+                            <label for="q2-b">B) Ethereum</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q2-c" name="q2" value="C) Ripple">
+                            <label for="q2-c">C) Ripple</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q2-d" name="q2" value="D) Dogecoin">
+                            <label for="q2-d">D) Dogecoin</label>
+                        </li>
+                    </ul>
+                    <button class="submit-button" onclick="checkAnswer(2)">Submit</button>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question">
+                    <h2>Question 3:</h2>
+                    <p>Ethereum is known for running what type of applications?</p>
+                    <ul class="options">
+                        <li>
+                            <input type="radio" id="q3-a" name="q3" value="A) Traditional banking apps">
+                            <label for="q3-a">A) Traditional banking apps</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q3-b" name="q3" value="B) Smart contracts">
+                            <label for="q3-b">B) Smart contracts</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q3-c" name="q3" value="C) Social media platforms">
+                            <label for="q3-c">C) Social media platforms</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q3-d" name="q3" value="D) E-commerce websites">
+                            <label for="q3-d">D) E-commerce websites</label>
+                        </li>
+                    </ul>
+                    <button class="submit-button" onclick="checkAnswer(3)">Submit</button>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question">
+                    <h2>Question 4:</h2>
+                    <p>Which cryptocurrency started as a joke?</p>
+                    <ul class="options">
+                        <li>
+                            <input type="radio" id="q4-a" name="q4" value="A) Bitcoin">
+                            <label for="q4-a">A) Bitcoin</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q4-b" name="q4" value="B) Ethereum">
+                            <label for="q4-b">B) Ethereum</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q4-c" name="q4" value="C) Ripple">
+                            <label for="q4-c">C) Ripple</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q4-d" name="q4" value="D) Dogecoin">
+                            <label for="q4-d">D) Dogecoin</label>
+                        </li>
+                    </ul>
+                    <button class="submit-button" onclick="checkAnswer(4)">Submit</button>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question">
+                    <h2>Question 5:</h2>
+                    <p>What are your thoughts on the future of cryptocurrency?</p>
+                    <textarea id="q5" rows="4" cols="50" placeholder="Write your answer here..."></textarea>
+                    <button class="submit-button" onclick="checkAnswer(5)">Submit</button>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question">
+                    <h2>Question 6:</h2>
+                    <p>Explain how blockchain technology works.</p>
+                    <textarea id="q6" rows="4" cols="50" placeholder="Write your answer here..."></textarea>
+                    <button class="submit-button" onclick="checkAnswer(6)">Submit</button>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question">
+                    <h2>Question 7:</h2>
+                    <p>Match the cryptocurrency to its creator:</p>
+                    <p>Bitcoin - <input type="text" id="match1" placeholder="Enter creator"></p>
+                    <p>Ethereum - <input type="text" id="match2" placeholder="Enter creator"></p>
+                    <p>Litecoin - <input type="text" id="match3" placeholder="Enter creator"></p>
+                    <button class="submit-button" onclick="checkAnswer(7)">Submit</button>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question">
+                    <h2>Question 8:</h2>
+                    <p>What is the maximum supply of Bitcoin?</p>
+                    <ul class="options">
+                        <li>
+                            <input type="radio" id="q8-a" name="q8" value="A) 21 million">
+                            <label for="q8-a">A) 21 million</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q8-b" name="q8" value="B) 100 million">
+                            <label for="q8-b">B) 100 million</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q8-c" name="q8" value="C) Unlimited">
+                            <label for="q8-c">C) Unlimited</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q8-d" name="q8" value="D) 50 million">
+                            <label for="q8-d">D) 50 million</label>
+                        </li>
+                    </ul>
+                    <button class="submit-button" onclick="checkAnswer(8)">Submit</button>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question">
+                    <h2>Question 9:</h2>
+                    <p>Which cryptocurrency has switched to a proof-of-stake consensus mechanism?</p>
+                    <ul class="options">
+                        <li>
+                            <input type="radio" id="q9-a" name="q9" value="A) Bitcoin">
+                            <label for="q9-a">A) Bitcoin</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q9-b" name="q9" value="B) Ethereum (after The Merge)">
+                            <label for="q9-b">B) Ethereum (after The Merge)</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q9-c" name="q9" value="C) Ripple">
+                            <label for="q9-c">C) Ripple</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q9-d" name="q9" value="D) Dogecoin">
+                            <label for="q9-d">D) Dogecoin</label>
+                        </li>
+                    </ul>
+                    <button class="submit-button" onclick="checkAnswer(9)">Submit</button>
+                    <div class="feedback"></div>
+                </div>
+                <div class="question">
+                    <h2>Question 10:</h2>
+                    <p>Which cryptocurrency has been known for its focus on privacy?</p>
+                    <ul class="options">
+                        <li>
+                            <input type="radio" id="q10-a" name="q10" value="A) Ethereum">
+                            <label for="q10-a">A) Ethereum</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q10-b" name="q10" value="B) Monero">
+                            <label for="q10-b">B) Monero</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q10-c" name="q10" value="C) Ripple">
+                            <label for="q10-c">C) Ripple</label>
+                        </li>
+                        <li>
+                            <input type="radio" id="q10-d" name="q10" value="D) Litecoin">
+                            <label for="q10-d">D) Litecoin</label>
+                        </li>
+                    </ul>
+                    <button class="submit-button" onclick="checkAnswer(10)">Submit</button>
+                    <div class="feedback"></div>
+                    <a href="index.html" class="button2">Go Back ...</a>
+                </div>
+            </div>
+            <div id="score" class="score-animation"></div>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2024 Cryptocurrency Quiz. All rights reserved.</p>
+            <p>By Montalvo Valle Jade & Ferruzca Raul</p>
+        </footer>
+    </div>
+    <script>
+        const correctAnswers = {
+            "1": "C) Bitcoin",
+            "2": "A) Bitcoin",
+            "3": "B) Smart contracts",
+            "4": "D) Dogecoin",
+            "5": "Open",
+            "6": "Open",
+            "7": {
+                "match1": "Satoshi Nakamoto",
+                "match2": "Vitalik Buterin",
+                "match3": "Charlie Lee"
+            },
+            "8": "A) 21 million",
+            "9": "B) Ethereum (after The Merge)",
+            "10": "B) Monero"
+        };
+
+        let score = 0;
+        let totalQuestions = 10;
+        let answersChecked = 0;
+
+        function checkAnswer(questionNumber) {
+            const feedbackElement = document.querySelector(`.question:nth-child(${questionNumber}) .feedback`);
+            const selectedOption = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+
+            if (selectedOption) {
+                const userAnswer = selectedOption.value;
+                selectedOption.nextElementSibling.style.backgroundColor = '#d3ffd3';  // Light green
+                if (userAnswer === correctAnswers[questionNumber]) {
+                    score++;
+                    feedbackElement.innerHTML = '<p class="correct-feedback">🤩Correct! 🤓</p>';
+                } else {
+                    feedbackElement.innerHTML = '<p class="incorrect-feedback">🤡Looser 💩. The correct answer is ' + correctAnswers[questionNumber] + '.</p>';
+                }
+            } else if (questionNumber === 5 || questionNumber === 6) {
+                const userAnswer = document.getElementById(`q${questionNumber}`).value.trim();
+                feedbackElement.innerHTML = '<p class="correct-feedback">Thank you for your response!</p>';
+            } else if (questionNumber === 7) {
+                const match1 = document.getElementById('match1').value;
+                const match2 = document.getElementById('match2').value;
+                const match3 = document.getElementById('match3').value;
+
+                if (match1 === correctAnswers[7].match1 && match2 === correctAnswers[7].match2 && match3 === correctAnswers[7].match3) {
+                    score++;
+                    feedbackElement.innerHTML = '<p class="correct-feedback">Correct!</p>';
+                } else {
+                    feedbackElement.innerHTML = '<p class="incorrect-feedback">Incorrect. The correct matches are: Bitcoin - Satoshi Nakamoto, Ethereum - Vitalik Buterin, Litecoin - Charlie Lee.</p>';
+                }
+            } else {
+                feedbackElement.innerHTML = '<p class="incorrect-feedback">Please select an answer.</p>';
+                return;
+            }
+
+            feedbackElement.classList.add('show');
+            answersChecked++;
+
+            if (answersChecked === totalQuestions) {
+                showScore();
+            }
+        }
+
+        function showScore() {
+            const scorePercentage = (score / totalQuestions) * 100;
+            const resultElement = document.getElementById('score');
+            resultElement.innerHTML = `<h2>Your Score: ${scorePercentage}%</h2><p>You got ${score} out of ${totalQuestions} correct.</p>`;
+            resultElement.classList.add('show');
+        }
+    </script>
+</body>
+</html>
